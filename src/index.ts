@@ -4,7 +4,7 @@ import { renderUserBlock } from './user.js'
 import { renderToast } from './lib.js'
 
 window.addEventListener('DOMContentLoaded', () => {
-  renderUserBlock('maxkuku', 'https://ru.gravatar.com/userimage/46100613/60186f4d4d5910df07d6041a6469d32e.jpeg', 0)
+  renderUserBlock()
   renderSearchFormBlock()
   renderSearchStubBlock()
   renderToast(
