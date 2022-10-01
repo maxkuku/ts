@@ -1,6 +1,7 @@
-export function renderBlock (elementId: string, html: string) {
+export function renderBlock (elementId: string, html: string): boolean {
   const element = document.getElementById(elementId)
   element.innerHTML = html
+  return true
 }
 
 type MessageType = {

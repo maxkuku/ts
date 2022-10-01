@@ -1,4 +1,5 @@
 import { renderBlock } from './lib.js'
+import { localS } from './localStorage.js'
 
 
 export function renderUserBlock() {
@@ -12,7 +13,7 @@ export function renderUserBlock() {
     'user-block',
     `
     <div class="header-container">
-      <img class="avatar" src="${user.avatarUrl}" alt="Wade Warren" />
+      <img class="avatar" src="${user.avatarUrl}" alt="${user.username}" />
       <div class="info">
           <p class="name">${user.username}</p>
           <p class="fav">
@@ -32,21 +33,20 @@ interface ITypeUser {
 }
 
 
-function getUserData(): ITypeUser {
+export function getUserData() {
 
-  const localStorageUser: ITypeUser = JSON.parse(localStorage.getItem('user'));
-  let user = {};
-  if(localStorageUser)
-    user = {
-      username: localStorageUser.username,
-      avatarUrl: localStorageUser.avatarUrl ? localStorageUser.avatarUrl : '/img/avatar.png',
-    }
-  else {
+  
+
+  
+  let user: ITypeUser = JSON.parse(localS.get('user'));
+
+  if (!user) {
     user = {
       username: 'no user',
       avatarUrl: '/img/avatar.png',
     }
   }
+
 
   return user;
 }
@@ -59,7 +59,8 @@ export function getFavoritesAmount () {
     amount: unknown,
   }
 
-  const favoritesAmount: TypeFavAmount = JSON.parse(localStorage.getItem('favoritesAmount'));
-  const favoritesCount = +favoritesAmount || 0;
+  const favoritesAmount: TypeFavAmount = JSON.parse(localS.get('favoriteItems'));
+  const len = Object.keys(favoritesAmount).length
+  const favoritesCount = len/3 || 0;
   return favoritesCount;
 }
