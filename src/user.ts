@@ -1,4 +1,6 @@
 import { renderBlock } from './lib.js'
+import { localS } from './localStorage.js'
+import { TFavorites } from './types.js'
 
 
 export function renderUserBlock() {
@@ -12,7 +14,7 @@ export function renderUserBlock() {
     'user-block',
     `
     <div class="header-container">
-      <img class="avatar" src="${user.avatarUrl}" alt="Wade Warren" />
+      <img class="avatar" src="${user.avatarUrl}" alt="${user.username}" />
       <div class="info">
           <p class="name">${user.username}</p>
           <p class="fav">
@@ -32,21 +34,20 @@ interface ITypeUser {
 }
 
 
-function getUserData(): ITypeUser {
+export function getUserData() {
 
-  const localStorageUser: ITypeUser = JSON.parse(localStorage.getItem('user'));
-  let user = {};
-  if(localStorageUser)
-    user = {
-      username: localStorageUser.username,
-      avatarUrl: localStorageUser.avatarUrl ? localStorageUser.avatarUrl : '/img/avatar.png',
-    }
-  else {
+  
+
+  
+  let user: ITypeUser = JSON.parse(localS.get('user'));
+
+  if (!user) {
     user = {
       username: 'no user',
       avatarUrl: '/img/avatar.png',
     }
   }
+
 
   return user;
 }
@@ -55,11 +56,15 @@ function getUserData(): ITypeUser {
 
 export function getFavoritesAmount () {
 
-  type TypeFavAmount = {
-    amount: unknown,
-  }
 
-  const favoritesAmount: TypeFavAmount = JSON.parse(localStorage.getItem('favoritesAmount'));
-  const favoritesCount = +favoritesAmount || 0;
-  return favoritesCount;
+  const favoritesAmount: TFavorites = JSON.parse(localS.get('favoriteItems'));
+  if (favoritesAmount) {
+    
+    const len = +favoritesAmount.length
+    const favoritesCount = len || 0;
+    return favoritesCount;
+  }
+  else {
+    return 0;
+  }
 }

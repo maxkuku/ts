@@ -24,11 +24,15 @@
   },
   "homepage": "https://github.com/maxkuku/ts#readme",
   "devDependencies": {
+    "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "eslint": "^8.23.1",
     "http-server": "^14.1.1",
     "nodemon": "^2.0.20",
     "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "node-fetch": "^3.2.10"
   }
 }

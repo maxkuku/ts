@@ -1,2 +1,14 @@
 node_modules
 package-lock.json
+src/index_lesson.ts
+src/index_lesson3.ts
+src/author.ts
+src/book.ts
+src/book-collection.ts
+src/collection.ts
+src/google-books.ts
+src/index_dz.ts
+src/helpers.ts
+src/notepad.ts
+src/product.ts
+src/ratingable.ts

@@ -1,4 +1,6 @@
 import { renderBlock } from './lib.js'
+import { localS } from './localStorage.js'
+
 
 export function renderSearchFormBlock () {
 
@@ -25,6 +27,7 @@ export function renderSearchFormBlock () {
   }
 
 
+
   function getSearchFormData() {
     
     const urlParams = new URLSearchParams(window.location.search);
@@ -35,44 +38,11 @@ export function renderSearchFormBlock () {
       checkout: urlParams.get('checkout') ? urlParams.get('checkout') : minOutDate,
       price: urlParams.get('price') ? urlParams.get('price') : '',
     }
+
+    localS.set('searchParams', storage)
+
     return storage;
   }
-
-
-  interface Place {
-    id?: number | string,
-    name?: string,
-    address?: string,
-    error?: string,
-  }
-
-  const random = Math.random() < 0.5;
-
-  function callbackSearch (random: boolean): void {
-    
-    const searchData: Place = {
-      id: '',
-      name: '',
-      address: '',
-      error: '',
-    };
-    setTimeout( () => {
-      if (random) {
-        console.log( searchData )
-      }
-      else {
-        console.log( 'error' );  
-      }
-    }, 3000 );
-  }
-
-
-  function sendToSearch(storage: ISearchFormData) {
-    console.log(storage);
-    callbackSearch(random);
-  }
-  setTimeout( () => sendToSearch(getSearchFormData()), 0);
-
 
 
   const storage: ISearchFormData = getSearchFormData();
@@ -106,7 +76,7 @@ export function renderSearchFormBlock () {
             <input id="max-price" type="text" value="${storage.price}" name="price" class="max-price" />
           </div>
           <div>
-            <div><button>Найти</button></div>
+            <div><button onclick="getSearchFormData()">Найти</button></div>
           </div>
         </div>
       </fieldset>
@@ -114,3 +84,8 @@ export function renderSearchFormBlock () {
     `
   )
 }
+
+
+
+
+
