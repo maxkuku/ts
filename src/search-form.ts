@@ -3,7 +3,7 @@ import { renderBlock } from './lib.js'
 export function renderSearchFormBlock () {
 
   const dateObj = new Date();
-  const datePlus2_Obj = new Date(+new Date() + 2*86400000);
+  const datePlus2_Obj = new Date(+dateObj + 2*86400000);
 
   const minDate = dateObj.toLocaleDateString('en-CA');
   const curDate = dateObj.toLocaleDateString('en-CA');
@@ -15,6 +15,67 @@ export function renderSearchFormBlock () {
   const maxOutDate = dateObj.toLocaleDateString('en-CA');
 
 
+
+
+  interface ISearchFormData {
+    city?: string,
+    checkin?: string,
+    checkout?: string,
+    price?: number | string,
+  }
+
+
+  function getSearchFormData() {
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    const storage: ISearchFormData = {
+      city: urlParams.get('city') ? urlParams.get('city') : 'Санкт-Петербург',
+      checkin: urlParams.get('checkin') ? urlParams.get('checkin') : curDate,
+      checkout: urlParams.get('checkout') ? urlParams.get('checkout') : minOutDate,
+      price: urlParams.get('price') ? urlParams.get('price') : '',
+    }
+    return storage;
+  }
+
+
+  interface Place {
+    id?: number | string,
+    name?: string,
+    address?: string,
+    error?: string,
+  }
+
+  const random = Math.random() < 0.5;
+
+  function callbackSearch (random: boolean): void {
+    
+    const searchData: Place = {
+      id: '',
+      name: '',
+      address: '',
+      error: '',
+    };
+    setTimeout( () => {
+      if (random) {
+        console.log( searchData )
+      }
+      else {
+        console.log( 'error' );  
+      }
+    }, 3000 );
+  }
+
+
+  function sendToSearch(storage: ISearchFormData) {
+    console.log(storage);
+    callbackSearch(random);
+  }
+  setTimeout( () => sendToSearch(getSearchFormData()), 0);
+
+
+
+  const storage: ISearchFormData = getSearchFormData();
   renderBlock(
     'search-form-block',
     `
@@ -23,7 +84,7 @@ export function renderSearchFormBlock () {
         <div class="row">
           <div>
             <label for="city">Город</label>
-            <input id="city" type="text" disabled value="Санкт-Петербург" />
+            <input id="city" type="text" disabled value="${storage.city}" />
             <input type="hidden" disabled value="59.9386,30.3141" />
           </div>
           <!--<div class="providers">
@@ -38,11 +99,11 @@ export function renderSearchFormBlock () {
           </div>
           <div>
             <label for="check-out-date">Дата выезда</label>
-            <input id="check-out-date" type="date" value="${minOutDate}" min="${minOutDate}" max="${maxOutDate}" name="checkout" />
+            <input id="check-out-date" type="date" value="${storage.checkout}" min="${minOutDate}" max="${maxOutDate}" name="checkout" />
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
-            <input id="max-price" type="text" value="" name="price" class="max-price" />
+            <input id="max-price" type="text" value="${storage.price}" name="price" class="max-price" />
           </div>
           <div>
             <div><button>Найти</button></div>
