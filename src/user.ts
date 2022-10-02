@@ -1,5 +1,6 @@
 import { renderBlock } from './lib.js'
 import { localS } from './localStorage.js'
+import { TFavorites } from './types.js'
 
 
 export function renderUserBlock() {
@@ -55,12 +56,15 @@ export function getUserData() {
 
 export function getFavoritesAmount () {
 
-  type TypeFavAmount = {
-    amount: unknown,
-  }
 
-  const favoritesAmount: TypeFavAmount = JSON.parse(localS.get('favoriteItems'));
-  const len = Object.keys(favoritesAmount).length
-  const favoritesCount = len/3 || 0;
-  return favoritesCount;
+  const favoritesAmount: TFavorites = JSON.parse(localS.get('favoriteItems'));
+  if (favoritesAmount) {
+    
+    const len = +favoritesAmount.length
+    const favoritesCount = len || 0;
+    return favoritesCount;
+  }
+  else {
+    return 0;
+  }
 }

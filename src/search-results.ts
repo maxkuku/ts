@@ -46,6 +46,7 @@ export function renderSearchResultsBlock (): void {
     `
   )
   
+  
   searchApartment().then(data => {
     renderBlock(
       'search-list-block',
