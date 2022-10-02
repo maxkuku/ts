@@ -1,0 +1,34 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "description": "Домашние задания по typescript",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf public/scripts && tsc",
+    "develop": "rm -rf public/scripts && tsc -p tsconfig-dev.json",
+    "start": "http-server -p 3000",
+    "lint": "eslint src --ext .js --ext .ts",
+    "lint-fix": "eslint src --ext .js --ext .ts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxkuku/ts.git"
+  },
+  "keywords": [
+    "ts"
+  ],
+  "author": "maxkuku",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxkuku/ts/issues"
+  },
+  "homepage": "https://github.com/maxkuku/ts#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.23.1",
+    "http-server": "^14.1.1",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.8.3"
+  }
+}
