@@ -8,14 +8,22 @@ export type Direction = 'back' | 'forward'
 export type YesNo = boolean | 0 | 1
 
 
-
-export enum Genre { 
-  Fantasy = 1, 
-  Adventure, 
-  Horror,
-  Programming
-  // остальные id сами по порядку
+export enum Genre {
+  'Fantasy' = 1,
+  'Adventure' ,
+  'Horror',
+  'Fun',
+  'No detect'
 }
+
+
+export interface ISearchFormData {
+  city?: string,
+  checkin?: string,
+  checkout?: string,
+  price?: number | string,
+}
+
 
 export type TFavorite = {
   id: Id,
@@ -25,4 +33,11 @@ export type TFavorite = {
 
 export type TFavorites = {
   [key: string]: TFavorite;
+}
+
+
+export type TBook = {
+  placeId: Id,
+  checkInDate: Date,
+  checkOutDate: Date,
 }

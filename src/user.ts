@@ -29,8 +29,8 @@ export function renderUserBlock() {
 
 
 interface ITypeUser {
-  username?: unknown,
-  avatarUrl?: unknown,
+  username?: string,
+  avatarUrl?: string,
 }
 
 
