@@ -36,8 +36,17 @@ export type TFavorites = {
 }
 
 
-export type TBook = {
+export type Book = {
   placeId: Id,
   checkInDate: Date,
   checkOutDate: Date,
+  maxPrice?: number
+}
+
+
+export type TRoom = {
+  placeId: Id,
+  checkInDate: Date,
+  checkOutDate: Date,
+  maxPrice?: number
 }

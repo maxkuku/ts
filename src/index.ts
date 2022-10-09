@@ -11,12 +11,19 @@ import { bookStart } from './booking.js'
 
 
 
+
 window.addEventListener('DOMContentLoaded', () => {
   renderUserBlock()
   renderSearchFormBlock()
   renderSearchStubBlock()
 
   renderSearchResultsBlock()
+
+
+
+  
+
+
 
   toggleFavoriteItem()
   

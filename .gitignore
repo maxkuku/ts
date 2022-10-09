@@ -15,12 +15,13 @@ src/collection.js
 src/google-books.ts
 src/google-books.js
 src/index_dz.ts
-src/index_dz.js
+src/index_lesson5.ts
 src/helpers.ts
 src/helpers.js
 src/notepad.ts
 src/notepadjs
 src/product.ts
 src/product.js
+src/purchase-context.ts
 src/ratingable.ts
 src/ratingable.js

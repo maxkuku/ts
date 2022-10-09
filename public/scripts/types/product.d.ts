@@ -1,4 +1,8 @@
-export interface Product {
+import { PurchaseContext } from './purchase-context.js';
+export declare abstract class Product {
     price: number;
-    getProductDescription(): string;
+    constructor(price: number);
+    abstract getProductDescription(): string;
+    getDiscountPrice(context: PurchaseContext): number;
+    protected calculateDiscount(context: PurchaseContext): number;
 }

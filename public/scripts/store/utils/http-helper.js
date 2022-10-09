@@ -1,0 +1,16 @@
+export class HttpHelper {
+    /**
+    * Метод выполняет запрос и преобразует ответ в JSON
+    * Тип ответа будет взять из дженерик параметра Response
+    */
+    static fetchAsJson(input, init) {
+        return fetch(input, init)
+            .then((response) => {
+            return response.text();
+        })
+            .then((responseText) => {
+            return JSON.parse(responseText);
+        });
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaHR0cC1oZWxwZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9zcmMvc3RvcmUvdXRpbHMvaHR0cC1oZWxwZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0EsTUFBTSxPQUFnQixVQUFVO0lBQ2hDOzs7TUFHRTtJQUNPLE1BQU0sQ0FBQyxXQUFXLENBQVcsS0FBa0IsRUFBRSxJQUFrQjtRQUd4RSxPQUFPLEtBQUssQ0FBQyxLQUFLLEVBQUUsSUFBSSxDQUFDO2FBQ3RCLElBQUksQ0FBQyxDQUFDLFFBQVEsRUFBRSxFQUFFO1lBQ2pCLE9BQU8sUUFBUSxDQUFDLElBQUksRUFBRSxDQUFBO1FBQ3hCLENBQUMsQ0FBQzthQUNELElBQUksQ0FBVyxDQUFDLFlBQVksRUFBRSxFQUFFO1lBQy9CLE9BQU8sSUFBSSxDQUFDLEtBQUssQ0FBQyxZQUFZLENBQUMsQ0FBQTtRQUNqQyxDQUFDLENBQUMsQ0FBQTtJQUNOLENBQUM7Q0FFRiIsInNvdXJjZXNDb250ZW50IjpbIlxuXG5cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBIdHRwSGVscGVyIHtcbi8qKlxuKiDQnNC10YLQvtC0INCy0YvQv9C+0LvQvdGP0LXRgiDQt9Cw0L/RgNC+0YEg0Lgg0L/RgNC10L7QsdGA0LDQt9GD0LXRgiDQvtGC0LLQtdGCINCyIEpTT05cbiog0KLQuNC/INC+0YLQstC10YLQsCDQsdGD0LTQtdGCINCy0LfRj9GC0Ywg0LjQtyDQtNC20LXQvdC10YDQuNC6INC/0LDRgNCw0LzQtdGC0YDQsCBSZXNwb25zZVxuKi9cbiAgcHVibGljIHN0YXRpYyBmZXRjaEFzSnNvbjxSZXNwb25zZT4oaW5wdXQ6IFJlcXVlc3RJbmZvLCBpbml0PzogUmVxdWVzdEluaXQpOlxuICBQcm9taXNlPFJlc3BvbnNlPiB7XG5cbiAgICByZXR1cm4gZmV0Y2goaW5wdXQsIGluaXQpXG4gICAgICAudGhlbigocmVzcG9uc2UpID0+IHtcbiAgICAgICAgcmV0dXJuIHJlc3BvbnNlLnRleHQoKVxuICAgICAgfSlcbiAgICAgIC50aGVuPFJlc3BvbnNlPigocmVzcG9uc2VUZXh0KSA9PiB7XG4gICAgICAgIHJldHVybiBKU09OLnBhcnNlKHJlc3BvbnNlVGV4dClcbiAgICAgIH0pXG4gIH1cblxufSJdfQ==

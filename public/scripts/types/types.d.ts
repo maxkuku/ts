@@ -26,8 +26,15 @@ export declare type TFavorite = {
 export declare type TFavorites = {
     [key: string]: TFavorite;
 };
-export declare type TBook = {
+export declare type Book = {
     placeId: Id;
     checkInDate: Date;
     checkOutDate: Date;
+    maxPrice?: number;
+};
+export declare type TRoom = {
+    placeId: Id;
+    checkInDate: Date;
+    checkOutDate: Date;
+    maxPrice?: number;
 };
