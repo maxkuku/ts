@@ -5,6 +5,9 @@ import { renderSearchResultsBlock } from './search-results.js'
 import { renderSearchStubBlock } from './search-results.js'
 import { renderUserBlock } from './user.js'
 import { toggleFavoriteItem } from './toggleFavorites.js'
+import { bookStart } from './booking.js'
+
+
 
 
 
@@ -16,12 +19,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   renderSearchResultsBlock()
 
-  // renderToast(
-  //   { text: 'Это пример уведомления. Используйте его при необходимости', type: 'success' },
-  //   { name: 'Понял', handler: () => { console.log('Уведомление закрыто') } }
-  // )
+
+
+  
+
+
 
   toggleFavoriteItem()
-
+  
+  setTimeout(() => {
+    bookStart()
+  }, 500)
+    
 })
 

@@ -1,5 +1,6 @@
 import { renderBlock } from './lib.js'
 import { localS } from './localStorage.js'
+import { ISearchFormData } from './types.js'
 
 
 export function renderSearchFormBlock () {
@@ -15,16 +16,6 @@ export function renderSearchFormBlock () {
   dateObj.setDate(0);
 
   const maxOutDate = dateObj.toLocaleDateString('en-CA');
-
-
-
-
-  interface ISearchFormData {
-    city?: string,
-    checkin?: string,
-    checkout?: string,
-    price?: number | string,
-  }
 
 
 
