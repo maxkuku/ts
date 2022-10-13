@@ -24,7 +24,7 @@ export function toggleFavoriteItem () {
 
           if (!item.classList.contains('active')) {
             const id = event.target.dataset.fav.toString()
-            const favoriteItems: string | null = localS.get('favoriteItems');
+            const favoriteItems: any = localS.get('favoriteItems');
             const favItemsObj = JSON.parse(favoriteItems)
             
 
@@ -47,7 +47,7 @@ export function toggleFavoriteItem () {
             
           }
           else {
-            const favoriteItems: string | null = localS.get('favoriteItems');
+            const favoriteItems: any = localS.get('favoriteItems');
             const favoriteObj = JSON.parse(favoriteItems);
 
             favoriteObj.forEach( (favorite: TFavorite, index: number) => {
@@ -68,7 +68,8 @@ export function toggleFavoriteItem () {
           
         }
 
-        const favoritesAmount: TFavorites = JSON.parse(localS.get('favoriteItems'));
+        const favLocalVal: any = localS.get('favoriteItems')
+        const favoritesAmount: TFavorites = JSON.parse(favLocalVal);
         if (favoritesAmount) {
           
           const len = +favoritesAmount.length

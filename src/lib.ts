@@ -1,3 +1,22 @@
+
+
+
+export class GetData {
+  
+  
+  
+  getPlace(url: string, p: boolean){
+    if (p)
+      return fetch(url, {method: 'PATCH'})
+    else  
+      return fetch(url)
+  }
+
+}
+
+
+
+
 export function renderBlock (elementId: string, html: string): boolean {
   const element = document.getElementById(elementId)
   element.innerHTML = html

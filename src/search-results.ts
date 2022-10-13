@@ -1,6 +1,12 @@
 import { renderBlock } from './lib.js'
 import { searchApartment } from './search.js'
 
+
+
+
+
+
+
 export function renderSearchStubBlock () {
   renderBlock(
     'search-results-block',
@@ -28,21 +34,28 @@ export function renderEmptyOrErrorSearchBlock (reasonMessage: string) {
 
 
 
+
+
 export function renderSearchResultsBlock (): void {
+
+  
+
   renderBlock(
     'search-results-block',
     `
+    <form id="sort">
     <div class="search-results-header">
         <p>Результаты поиска</p>
         <div class="search-results-filter">
             <span><i class="icon icon-filter"></i> Сортировать:</span>
-            <select>
-                <option selected="">Сначала дешёвые</option>
-                <option selected="">Сначала дорогие</option>
-                <option>Сначала ближе</option>
+            <select id="sorting">
+                <option value="cheap">Сначала дешёвые</option>
+                <option value="rich">Сначала дорогие</option>
+                <option value="close">Сначала ближе</option>
             </select>
         </div>
     </div>
+    </form>
     `
   )
   
@@ -54,6 +67,6 @@ export function renderSearchResultsBlock (): void {
     )
   })
 
-  
-  
+
+
 }
