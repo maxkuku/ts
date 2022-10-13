@@ -1,4 +1,5 @@
 
+import { database } from './flat-rent-sdk.js'
 import { localS } from './localStorage.js'
 import { TFavorite } from './types.js'
 
@@ -50,6 +51,9 @@ export async function searchApartment(): Promise<string>
     const checkOutDate: Date = new Date(urlParams.get('checkout'))
     const maxPrice: string | null = urlParams.get('price')
 
+    
+
+
     let url = `http://localhost:3030/places?checkInDate=${dateToUnixStamp(checkInDate)}&checkOutDate=${dateToUnixStamp(checkOutDate)}&coordinates=59.9386,30.3141`
 
     if (+maxPrice > 0) {
@@ -67,22 +71,38 @@ export async function searchApartment(): Promise<string>
     else {
       
 
-
+      const textdb = database
       
       
 
-      if (data.length > 0) {
+      if (data.length > 0 || textdb.length > 0) {
+
+        const textDbFormated: object[] = []
+        textdb.forEach(text => {
+          textDbFormated.push({
+            id: text.id,
+            image: `/img/${text.photos[0]}`,
+            name: text.title,
+            description: text.details,
+            remoteness: 1,
+            price: text.price
+          })
+        })
+
+        const allResults = [].concat(data, textDbFormated)
+        console.log(allResults)
 
         let str = '<div class="search-list-block"><ul class="results-list">'
 
-        data.forEach((result_2: { price: number; id: string; image: string; name: string; remoteness: string; description: string }) => {
+        allResults.forEach((result_2: { price: number; id: string; image: string; name: string; remoteness: string; description: string }) => {
 
           let active = '';
+          const favLocalVal: any = localS.get('favoriteItems');
           
-          
-          if (localS.get('favoriteItems') != null) {
+          if (favLocalVal != null) {
 
-            JSON.parse(localS.get('favoriteItems')).forEach((favorite: TFavorite) => {
+
+            JSON.parse(favLocalVal).forEach((favorite: TFavorite) => {
               if (favorite.id === result_2.id.toString()) {
                 active = 'active'
                 

@@ -17,11 +17,10 @@ window.addEventListener('DOMContentLoaded', () => {
   renderSearchFormBlock()
   renderSearchStubBlock()
 
-  renderSearchResultsBlock()
-
 
 
   
+  renderSearchResultsBlock()
 
 
 

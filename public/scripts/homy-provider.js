@@ -1,0 +1,8 @@
+import { GetData } from './lib.js';
+export class HomyProvider {
+    find(url) {
+        const flats = new GetData();
+        return flats.getPlace(url, false);
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaG9teS1wcm92aWRlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9ob215LXByb3ZpZGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxPQUFPLEVBQUUsTUFBTSxVQUFVLENBQUM7QUFNbkMsTUFBTSxPQUFPLFlBQVk7SUFHaEIsSUFBSSxDQUFDLEdBQVc7UUFHckIsTUFBTSxLQUFLLEdBQUcsSUFBSSxPQUFPLEVBQUUsQ0FBQTtRQUMzQixPQUFPLEtBQUssQ0FBQyxRQUFRLENBQUMsR0FBRyxFQUFFLEtBQUssQ0FBQyxDQUFBO0lBQ25DLENBQUM7Q0FFRiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEdldERhdGEgfSBmcm9tICcuL2xpYi5qcyc7XG5cblxuXG5cblxuZXhwb3J0IGNsYXNzIEhvbXlQcm92aWRlciB7XG5cblxuICBwdWJsaWMgZmluZCh1cmw6IHN0cmluZykge1xuXG4gICAgXG4gICAgY29uc3QgZmxhdHMgPSBuZXcgR2V0RGF0YSgpXG4gICAgcmV0dXJuIGZsYXRzLmdldFBsYWNlKHVybCwgZmFsc2UpXG4gIH1cblxufSJdfQ==

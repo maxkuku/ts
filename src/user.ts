@@ -38,8 +38,8 @@ export function getUserData() {
 
   
 
-  
-  let user: ITypeUser = JSON.parse(localS.get('user'));
+  const localUserVal: any = localS.get('user')
+  let user: ITypeUser = JSON.parse(localUserVal);
 
   if (!user) {
     user = {
@@ -56,8 +56,8 @@ export function getUserData() {
 
 export function getFavoritesAmount () {
 
-
-  const favoritesAmount: TFavorites = JSON.parse(localS.get('favoriteItems'));
+  const favLocalVal: any = localS.get('favoriteItems')
+  const favoritesAmount: TFavorites = JSON.parse(favLocalVal);
   if (favoritesAmount) {
     
     const len = +favoritesAmount.length

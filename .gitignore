@@ -1,5 +1,7 @@
 node_modules
 package-lock.json
+src/typesctipt-flatrent-sdk
+src/typesctipt-homy-api
 src/index_lesson.ts
 src/index_lesson.js
 src/index_lesson3.ts

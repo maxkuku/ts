@@ -1,23 +1,8 @@
 import { responseToJson, dateToUnixStamp } from './search.js'
 import { localS } from './localStorage.js'
 import { renderToast } from './lib.js'
-// import { TBook } from './types.js'
 
 
-
-// const fetch = require('node-fetch')
-
-
-
-// function searchForBooking(checkInDate: Date, checkOutDate: Date, maxPrice: number) {
-//   let url = `http://localhost:3030/places?checkInDate=${dateToUnixStamp(checkInDate)}&checkOutDate=${dateToUnixStamp(checkOutDate)}&coordinates=59.9386,30.3141`
-
-//   if (maxPrice != null) {
-//     url += `&maxPrice=${maxPrice}`
-//   }
-
-//   return responseToJson(fetch(url))
-// }
 
 
 export function book(placeId: string | number, checkInDate: Date | null, checkOutDate: Date | null) {
@@ -35,7 +20,7 @@ export function book(placeId: string | number, checkInDate: Date | null, checkOu
 
     if (data) {
 
-      console.log(`booked: ${placeId}, chek in: ${checkInDate.getTime()}, check out: ${checkOutDate.getTime()}`)
+      // console.log(`booked: ${placeId}, chek in: ${checkInDate.getTime()}, check out: ${checkOutDate.getTime()}`)
 
       const bookRes = {
         'id': placeId, 
@@ -43,11 +28,14 @@ export function book(placeId: string | number, checkInDate: Date | null, checkOu
         'checkOut': checkOutDate.getTime()
       }
 
-      localS.set('booked', bookRes )
+      
 
       renderToast(
-        { text: `Вы забронировали номер ${placeId} с ${new Date(checkInDate).toLocaleString('ru-RU')} по ${new Date(checkOutDate).toLocaleString('ru-RU')}`, type: 'success' },
-        { name: 'Ок', handler: () => { console.log('Уведомление закрыто') } }
+        { text: `Подтвердите бронь номера <b>${placeId}</b> <br>с <i>${new Date(checkInDate).toLocaleString('en-CA')}</i> <br>по <i>${new Date(checkOutDate).toLocaleString('ru-RU')}</i>`, type: 'success' },
+        { name: 'Ок', handler: () => { 
+          console.log('Уведомление закрыто') 
+          localS.set('booked', bookRes )
+        } }
       )
 
     }
@@ -56,14 +44,11 @@ export function book(placeId: string | number, checkInDate: Date | null, checkOu
   else {
     return false
   }
-
-
-
 }
 
 
 
-export function bookStart() {
+export function bookStart(): any {
 
   document.querySelectorAll('.result-info--footer button').forEach( (elt) => {
     elt.addEventListener('click', (ev: MouseEvent) => {

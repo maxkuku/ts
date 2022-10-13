@@ -164,9 +164,10 @@ ul.results-list {
 .result-img-container {
     position: relative;
     margin-right: 16px;
+    max-width: 245px;
 }
 .result-img {
-    width: 245px;
+    width: 100%;
     height: auto;
     margin-right: 16px;
 }
